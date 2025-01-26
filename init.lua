@@ -32,11 +32,11 @@ local find_previous_matching_line = function(start_line, pattern)
 end
 
 
+if vim.g.vscode then
+local vscode = require('vscode')  
 -- ========================
 -- General
 -- ========================
-if vim.g.vscode then
-local vscode = require('vscode')  
 
 vim.keymap.set('n', "<leader>tl", function()
 	vscode.call("workbench.action.toggleLightDarkThemes")
@@ -45,13 +45,40 @@ end)
 vim.keymap.set('n', "<leader>ff", function()
 	vscode.call("workbench.action.files.openFile")
 end)
+-- pane management
 vim.keymap.set('n', "<leader>wh", function()
 	vscode.call("workbench.action.splitEditorDown")
 end)
 vim.keymap.set('n', "<leader>wv", function()
 	vscode.call("workbench.action.splitEditorRight")
 end)
+-- rename symbol
+vim.keymap.set('n', "<leader>lr", function()
+	vscode.call("editor.action.rename")
+end)
+-- show references
+vim.keymap.set('n', "<leader>lx", function()
+	vscode.call("editor.action.goToReferences")
+end)
+-- replace string in file
+vim.keymap.set('n', "<leader>rf", function()
+	vscode.call("editor.action.startFindReplaceAction")
+end)
+-- finding
+vim.keymap.set('n', "<leader>sf", function()
+	vscode.call("workbench.action.findInFiles")
+end)
 
+-- navigation
+vim.keymap.set('n', "<leader>,", function()
+	vscode.call("workbench.action.navigateBack")
+end)
+vim.keymap.set('n', "<leader>.", function()
+	vscode.call("workbench.action.navigateForward")
+end)
+vim.keymap.set('n', "<leader>b", function()
+	vscode.call("workbench.action.quickOpen")
+end)
 -- ========================
 -- Matlab
 -- ========================
