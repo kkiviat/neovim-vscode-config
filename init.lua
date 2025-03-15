@@ -101,7 +101,7 @@ local matlab_eval_line = function()
 	vscode.call("matlab.runSelection", {
 	   range = { curr_line, curr_line },
 	})
-	vscode.action("workbench.action.focusPreviousGroup")	
+	vscode.action("workbench.action.focusActiveEditorGroup")	
 	vim.cmd('norm! j')
 end
 vim.keymap.set('n', "<leader>ml", matlab_eval_line )
@@ -125,7 +125,7 @@ local matlab_run_cell = function()
 	vscode.call("matlab.runSelection", {
 	   range = { start_line, end_line },
 	})
-	vscode.action("workbench.action.focusPreviousGroup")	
+	vscode.action("workbench.action.focusActiveEditorGroup")	
 end
 vim.keymap.set('n', "<leader>mc", matlab_run_cell)
 vim.keymap.set('n', "<leader>ec", matlab_run_cell)
